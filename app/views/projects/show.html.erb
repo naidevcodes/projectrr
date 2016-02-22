@@ -1,4 +1,58 @@
 <h1><%= @project.name %></h1>
-<%= link_to('Edit Project', edit_project_path(@project)) %>
-<%= link_to('Add Task', new_project_task_path(@project)) %>
+<h2><%= @project.description %></h2>
 
+<p><%= @project.start_date %></p>
+<p><%= @project.projected_end_date %></p>
+<p><%= @project.actual_end_date %></p>
+<p><%= @project.budget %></p>
+<p><%= @project.cost %></p>
+
+<p><%= link_to('Edit Project', edit_project_path(@project)) %></p>
+<p><%= link_to('Add Task', new_project_task_path(@project)) %></p>
+
+<article>
+  <header>
+    <h2>Tasks</h2>
+    <table>
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Due Date</td>
+          <td>Action</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tasks.each do |task| %>
+        <tr>
+          <td><%= task.name %></td>
+          <td><%= task.due_date %></td>
+          <td><%= link_to('Edit Task', edit_project_task_path(@project, task)) %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </header>
+</article>
+___________________________________________
+
+<!--<article>-->
+<!--  <header>-->
+<!--    <h2>Resources</h2>-->
+<!--    <table>-->
+<!--      <thead>-->
+<!--        <tr>-->
+<!--          <td>Name</td>-->
+<!--          <td>Description</td>-->
+<!--        </tr>-->
+<!--      </thead>-->
+<!--      <tbody>-->
+<!--        <%# @resources.each do |resource| %>-->
+<!--        <tr>-->
+<!--          <td><%#= resource.name %></td>-->
+<!--          <td><%#= resource.description %></td>-->
+<!--        </tr>-->
+<!--        <%# end %>-->
+<!--      </tbody>-->
+<!--    </table>-->
+<!--  </header>-->
+<!--</article>-->
