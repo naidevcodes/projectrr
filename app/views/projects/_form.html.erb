@@ -1,0 +1,38 @@
+<%= form_for(@project) do |f| %>
+  <%= render 'shared/errors', object: @project %>
+  
+  <fieldset>
+    <div class="field">
+        <%= f.label :name %><br>
+        <%= f.text_field :name %>
+    </div>
+    <div class="field">
+        <%= f.label :description %><br>
+        <%= f.text_field :description %>
+    </div>
+    <div class="field">
+        <%= f.label :start_date %><br>
+        <%= f.text_field :start_date %>
+    </div>
+    <div class="field">
+        <%= f.label :projected_end_date %><br>
+        <%= f.text_field :projected_end_date %>
+    </div>
+    <div class="field">
+        <%= f.label :actual_end_date %><br>
+        <%= f.text_field :actual_end_date %>
+    </div>
+    <div class="field">
+        <%= f.label :budget %><br>
+        <%= f.text_field :budget %>
+    </div>
+    <div class="field">
+        <%= f.label :cost %><br>
+        <%= f.text_field :cost %>
+    </div>
+    <div class="actions">
+        <%= f.submit %>
+    </div>
+  </fieldset>
+  
+<% end %>

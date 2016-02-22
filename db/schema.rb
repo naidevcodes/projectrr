@@ -11,9 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20160212035926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "projects", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "start_date"
+    t.datetime "projected_end_date"
+    t.datetime "actual_end_date"
+    t.decimal  "budget",             precision: 9, scale: 2
+    t.decimal  "cost",               precision: 9, scale: 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.integer  "project_id"
+    t.string   "name"
+    t.datetime "due_date"
+    t.integer  "projects_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tasks", ["projects_id"], name: "index_tasks_on_projects_id", using: :btree
+
+  add_foreign_key "tasks", "projects"
 end
