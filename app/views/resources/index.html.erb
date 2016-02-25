@@ -1,0 +1,20 @@
+<%= "#{pluralize(@resources.count, "resource")}" %>
+
+<table>
+  <thead>
+    <tr>
+      <td>Name</td>
+      <td>Description</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @resources.each do |resource| %>
+      <tr>
+        <td><%= resource.name %></td>
+        <td><%= resource.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to('New Resource', new_resource_path) %> 

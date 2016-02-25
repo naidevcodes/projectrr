@@ -1,7 +1,8 @@
 class Project < ActiveRecord::Base 
   has_many :tasks, dependent: :destroy  
-  has_many :enablements
-  has_many :resources, through: :enablements
+  
+  has_many :assignments
+  has_many :resources, through: :assignments
   
   validates :name, presence: true
 end

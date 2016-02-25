@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160212035926) do
+ActiveRecord::Schema.define(version: 20160223213555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "assignments", force: :cascade do |t|
+    t.integer  "project_id"
+    t.integer  "resource_id"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "assignments", ["project_id", "resource_id"], name: "index_assignments_on_project_id_and_resource_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
@@ -24,6 +35,13 @@ ActiveRecord::Schema.define(version: 20160212035926) do
     t.datetime "actual_end_date"
     t.decimal  "budget",             precision: 9, scale: 2
     t.decimal  "cost",               precision: 9, scale: 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "resources", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
