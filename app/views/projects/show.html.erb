@@ -22,7 +22,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @tasks.each do |task| %>
+        <% @project.tasks.each do |task| %>
         <tr>
           <td><%= task.name %></td>
           <td><%= task.due_date %></td>
@@ -36,7 +36,7 @@
 
 <article>
   <header>
-    <h2>Resources</h2>
+    <h2>Resource</h2>
     <table>
       <thead>
         <tr>
@@ -45,11 +45,11 @@
         </tr>
       </thead>
       <tbody>
-        <%= @resources.each do |resource| %>
-        <tr>
-          <td><%= resource.name %></td>
-          <td><%= resource.description %></td>
-        </tr>
+        <%= @resources.all.each do |resource| %>
+          <tr>
+            <td><%= resource.name %></td>
+            <td><%= resource.description %></td>
+          </tr>
         <% end %>
       </tbody>
     </table>

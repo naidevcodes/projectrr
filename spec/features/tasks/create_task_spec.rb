@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature 'Creating a task', type: :feature do
+  before do
+    @user = FactoryGirl.create(:user)
+    sign_in(@user)
+  end
+  
   scenario 'saves the task if it is valid' do
     project = FactoryGirl.create(:project)
     

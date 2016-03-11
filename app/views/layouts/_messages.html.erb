@@ -1,3 +1,8 @@
 <% flash.each do |key, value| %>
-  <%= content_tag(:p, value, :class => "flash #{key}") %>
+  <div class="<%= foundation_flash_class(key) %>" data-closable>
+      <%= value %>
+    <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
 <% end %>

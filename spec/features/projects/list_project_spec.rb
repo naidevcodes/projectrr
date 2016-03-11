@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature 'Listing all projects', type: :feature do
+  before do
+    @user = FactoryGirl.create(:user)
+    sign_in(@user)
+  end
+   
   scenario 'returns a message when there are no projects to view' do
     visit '/'
     click_link 'Projects'
@@ -25,7 +30,7 @@ RSpec.feature 'Listing all projects', type: :feature do
       
       expect(current_url).to eq(projects_url)
       expect(page).to have_content('3 projects')
-      expect(page).to hve_content(project1.name)
+      expect(page).to have_content(project1.name)
       expect(page).to have_content(project1.description)
       expect(page).to have_content(project1.start_date)
       expect(page).to have_content(project1.projected_end_date)

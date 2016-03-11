@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature 'Editing a project', type: :feature do
+  before do
+    @user = FactoryGirl.create(:user)
+    sign_in(@user)
+  end
+   
   scenario 'updates the project and shows the project updated details' do
     project = FactoryGirl.create(:project)
     

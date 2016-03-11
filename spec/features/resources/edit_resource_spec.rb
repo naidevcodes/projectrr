@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature 'Editing a resource', type: :feature do
+  before do
+    @user = FactoryGirl.create(:user)
+    sign_in(@user)
+  end
+  
   scenario 'updates the resource and shows the resource updated details' do
     resource = FactoryGirl.create(:resource)
     

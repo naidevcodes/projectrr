@@ -1,6 +1,6 @@
 <%= "#{pluralize(@projects.count, "project")}" %>
 
-<table>
+<table id="projects">
   <thead>
     <tr>
       <td>Name</td>
@@ -10,6 +10,7 @@
       <td>Actual End Date</td>
       <td>Budget</td>
       <td>Cost</td>
+      <td>Action</td>
     </tr>
   </thead>
   <tbody>
@@ -22,6 +23,7 @@
         <td><%= project.actual_end_date %></td>
         <td><%= project.budget %></td>
         <td><%= project.cost %></td>
+        <td><a href="projects-show.html"><%= link_to(project.name, project) %></a></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature 'Creating a new resource' do
+  before do
+    @user = FactoryGirl.create(:user)
+    sign_in(@user)
+  end
+  
   scenario 'succeeds with valid values' do
     
     visit '/resources'

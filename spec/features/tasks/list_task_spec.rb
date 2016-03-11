@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature 'Showing a project task list' do
+  before do
+    @user = FactoryGirl.create(:user)
+    sign_in(@user)
+  end
+  
   scenario 'displays the tasks' do
     project = FactoryGirl.create(:project)
     task1 = project.tasks.create!(name: 'Task One', due_date: '2016-05-31')

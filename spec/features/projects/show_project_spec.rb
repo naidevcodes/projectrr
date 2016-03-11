@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature 'Viewing a project', type: :feature do
+   before do
+     @user = FactoryGirl.create(:user)
+     sign_in(@user)
+   end
+   
   scenario 'shows the project details' do
     project = FactoryGirl.create(:project)
     

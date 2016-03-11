@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature 'Editing a task' do
+  before do
+    @user = FactoryGirl.create(:user)
+    sign_in(@user)
+  end
+  
   scenario 'saves the updated task with valid values' do
     project = FactoryGirl.create(:project)
     task = project.tasks.create!(name: 'Task One', due_date: '2016-06-15')

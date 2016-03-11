@@ -1,0 +1,16 @@
+<h1>Assignment for <%= @assignment.project.name %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <td>Resource</td>
+      <td>Start Date</td>
+      <td>End Date</td>
+    </tr>
+    <tr>
+      <td><%= @assignment.resource.name %></td>
+      <td><%= @assignment.start_date %></td>
+      <td><%= @assignment.end_date %></td>
+    </tr>
+  </thead>
+</table>
