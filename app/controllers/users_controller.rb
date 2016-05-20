@@ -12,7 +12,6 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      UserMailer.thank_you(@user).deliver
       redirect_to @user, notice: 'User successfully created.'
     else
       flash.now[:alert] = 'User was not created.'

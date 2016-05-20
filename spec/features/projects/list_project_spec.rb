@@ -7,6 +7,8 @@ RSpec.feature 'Listing all projects', type: :feature do
   end
    
   scenario 'returns a message when there are no projects to view' do
+    Project.destroy_all
+    
     visit '/'
     click_link 'Projects'
     
@@ -14,16 +16,17 @@ RSpec.feature 'Listing all projects', type: :feature do
     expect(page).to have_content('0 projects')
   end
   
+  context 'when projects exist' do
+    before(:all) do
+      Project.destroy_all
+      @project1 = FactoryGirl.create(:project)
+      @project2 = FactoryGirl.create(:project)
+      @project3 = FactoryGirl.create(:project)
+    end
+  end
+  
   scenario 'displays the projects' do
-    project1 = Project.create!(name: 'Test Project', description: 'Testing Purposes',       # Use the bang `!` so errors bubble up
-      start_date: '2015-01-15', projected_end_date: '2015-12-31', 
-      actual_end_date: '2016-01-15', budget: 1000.00, cost: 2000.00)
-    project2 = Project.create!(name: 'Test Project A', description: 'Testing Purposes', 
-      start_date: '2015-01-15', projected_end_date: '2015-12-31', 
-      actual_end_date: '2016-01-15', budget: 1000.00, cost: 2000.00)
-    project3 = Project.create!(name: 'Test Project B', description: 'Testing Purposes', 
-      start_date: '2015-01-15', projected_end_date: '2015-12-31', 
-      actual_end_date: '2016-01-15', budget: 1000.00, cost: 2000.00)
+    
       
       visit '/'
       click_link 'Projects'

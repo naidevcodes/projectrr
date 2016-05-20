@@ -1,16 +1,24 @@
-<%= "#{pluralize(@projects.count, "project")}" %>
+<div class="button-group">
+  <%= link_to_unless_current("English", {locale: 'en'}, {class: 'button'}) %>
+  <%= link_to_unless_current("German", {locale: 'de'}, {class: 'button'}) %>
+  <%= link_to_unless_current("Spanish", {locale: 'es'}, {class: 'button'}) %>
+</div>
+
+<h1><%= t('.title') %> </h1>
+
+<%= "#{pluralize(@projects.count, "project")} #{t('.subtitle')}" %>
 
 <table id="projects">
   <thead>
     <tr>
-      <td>Name</td>
-      <td>Description</td>
-      <td>Start Date</td>
-      <td>Projected End Date</td>
-      <td>Actual End Date</td>
-      <td>Budget</td>
-      <td>Cost</td>
-      <td>Action</td>
+      <td><%= Project.human_attribute_name(:name) %></td>
+      <td><%= Project.human_attribute_name(:description) %></td>
+      <td><%= Project.human_attribute_name(:start_date) %></td>
+      <td><%= Project.human_attribute_name(:projected_end_date) %></td>
+      <td><%= Project.human_attribute_name(:actual_end_date) %></td>
+      <td><%= Project.human_attribute_name(:budget) %></td>
+      <td><%= Project.human_attribute_name(:cost) %></td>
+      <td><%= t('.action') %></td>
     </tr>
   </thead>
   <tbody>
@@ -18,11 +26,11 @@
       <tr>
         <td><%= project.name %></td>
         <td><%= project.description %></td>
-        <td><%= project.start_date %></td>
-        <td><%= project.projected_end_date %></td>
-        <td><%= project.actual_end_date %></td>
-        <td><%= project.budget %></td>
-        <td><%= project.cost %></td>
+        <td><%= project.start_date.to_formatted_s(:long) %></td>
+        <td><%= project.projected_end_date.to_formatted_s(:long) %></td>
+        <td><%= project.actual_end_date.to_formatted_s(:long) %></td>
+        <td><%= number_to_currency(project.budget) %></td>
+        <td><%= number_to_currency(project.cost) %></td>
         <td><a href="projects-show.html"><%= link_to(project.name, project) %></a></td>
       </tr>
     <% end %>
