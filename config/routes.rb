@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :resources, only: [:index, :new, :create, :show, :edit, :update] 
     resources :assignments, only: [:new, :create, :show, :edit, :update]
     resources :users, only: [:index, :new, :create, :show, :edit, :update]
+    resources :translations, only: [:index, :create]
     root to: 'home#index'
  end
 end

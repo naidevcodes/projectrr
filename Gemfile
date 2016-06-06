@@ -17,7 +17,9 @@ gem 'puma'
 gem 'bcrypt'
 gem 'email_validator'
 gem 'warden'
-gem 'foundation-rails'
+gem 'foundation-rails', '6.2.0.1' 
+gem 'redis'
+gem 'sidekiq'
 
 group :development, :test do
   gem 'byebug'

@@ -1,14 +1,10 @@
-class UserMailer < ApplicationMailer
+class UserMailer < ActionMailer::Base
+  default from: 'noreturn@example.com'
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.user_mailer.thank_you.subject
-  #
-  def thank_you(user)
-    @user = user
-    @greeting = "Hi"
-
-    mail to: "to@example.org", subject: "Thanks!"
+  def test_email(email)
+    mail(
+      to: email,
+      subject: 'Testing Active Job Mailer'
+    )
   end
 end
